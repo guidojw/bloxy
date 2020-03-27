@@ -729,6 +729,7 @@ interface ClientConstructorOptions {
         },
         requester: Function; // TOOD: For dealing with the requests
         debugging: boolean;
+        throwHttpErrors: boolean;
     }
 }
 
