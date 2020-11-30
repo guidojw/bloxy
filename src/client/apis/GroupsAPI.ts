@@ -538,7 +538,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/${options.groupId}`
+                path: `v1/groups/${options.groupId}`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -549,6 +552,9 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: false,
             request: {
                 path: `v2/groups`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 qs: {
                     groupIds: options.groupIds.join(",")
                 }
@@ -562,6 +568,9 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/audit-log`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 qs: options
             },
             json: true
@@ -572,7 +581,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/${options.groupId}/settings`
+                path: `v1/groups/${options.groupId}/settings`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -584,6 +596,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/settings`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -594,7 +609,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/configuration/metadata`
+                path: `v1/groups/configuration/metadata`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -604,7 +622,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/metadata`
+                path: `v1/groups/metadata`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -622,6 +643,9 @@ export default class GroupsAPI extends BaseAPI {
                     "request.publicGroup": options.publicGroup,
                     "request.buildersClubMembersOnly": options.buildersClubMembersOnly,
                     "request.files": options.files
+                },
+                responseOptions: {
+                    allowedStatusCodes: [200]
                 }
             },
             json: true
@@ -634,6 +658,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/description`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -646,6 +673,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/status`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -658,6 +688,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/icon`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 body: options.files
             },
             json: true
@@ -670,6 +703,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/join-requests`,
                 method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: {
                     UserIds: options.userIds
                 }
@@ -683,7 +719,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/join-requests`,
-                qs: options
+                qs: options,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -695,6 +734,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/join-requests`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: {
                     UserIds: options.userIds
                 }
@@ -708,7 +750,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/join-requests/users/${options.userId}`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -718,7 +763,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: true,
             request: {
-                path: `v1/groups/${options.groupId}/join-requests/users/${options.userId}`
+                path: `v1/groups/${options.groupId}/join-requests/users/${options.userId}`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -729,7 +777,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/join-requests/users/${options.userId}`,
-                method: "POST"
+                method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -739,7 +790,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: true,
             request: {
-                path: `v1/groups/${options.groupId}/membership`
+                path: `v1/groups/${options.groupId}/membership`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -749,7 +803,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: true,
             request: {
-                path: `v1/groups/${options.groupId}/roles`
+                path: `v1/groups/${options.groupId}/roles`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -760,6 +817,9 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: false,
             request: {
                 path: `v1/groups/${options.groupId}/roles/${options.roleId}/users`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 qs: {
                     ...options,
                     roleSetId: options.roleId
@@ -774,6 +834,9 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: false,
             request: {
                 path: `v1/groups/${options.groupId}/users`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 qs: options
             },
             json: true
@@ -786,6 +849,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/users`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -796,7 +862,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: true,
             request: {
-                path: `v1/user/groups/pending`
+                path: `v1/user/groups/pending`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -806,7 +875,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: true,
             request: {
-                path: `v1/users/${options.userId}/groups/roles`
+                path: `v1/users/${options.userId}/groups/roles`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -818,6 +890,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/change-owner`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -830,6 +905,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/claim-ownership`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -841,7 +919,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/users/${options.userId}`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -853,6 +934,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/users/${options.userId}`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -863,7 +947,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: true,
             request: {
-                path: `v1/groups/${options.groupId}/payouts`
+                path: `v1/groups/${options.groupId}/payouts`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -875,6 +962,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/payouts`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: {
                     PayoutType: options.type,
                     Recipients: options.users.map(userData => ({
@@ -894,6 +984,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/payouts/recurring`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: {
                     PayoutType: options.type,
                     Recipients: options.users.map(userData => ({
@@ -915,6 +1008,9 @@ export default class GroupsAPI extends BaseAPI {
                 qs: {
                     "model.startRowIndex": options.startRowIndex || 0,
                     "model.maxRows": options.maxRows
+                },
+                responseOptions: {
+                    allowedStatusCodes: [200]
                 }
             },
             json: true
@@ -927,6 +1023,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/requests`,
                 method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: {
                     GroupIds: options.withGroups
                 }
@@ -940,7 +1039,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/requests`,
-                qs: options
+                qs: options,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -952,6 +1054,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/requests`,
                 method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: {
                     GroupIds: options.withGroups
                 }
@@ -965,7 +1070,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/${options.withGroup}`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -976,7 +1084,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/${options.withGroup}`,
-                method: "POST"
+                method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -986,7 +1097,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: true,
             request: {
-                path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/requests/${options.withGroup}`
+                path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/requests/${options.withGroup}`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -997,7 +1111,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/relationships/${options.relationshipType}/requests/${options.withGroup}`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1007,7 +1124,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/${options.groupId}/roles/${options.roleId}/permissions`
+                path: `v1/groups/${options.groupId}/roles/${options.roleId}/permissions`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1019,6 +1139,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/roles/${options.roleId}/permissions`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -1029,7 +1152,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/${options.groupId}/roles/guest/permissions`
+                path: `v1/groups/${options.groupId}/roles/guest/permissions`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1039,7 +1165,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/${options.groupId}/roles/permissions`
+                path: `v1/groups/${options.groupId}/roles/permissions`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1049,7 +1178,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/${options.groupId}/social-links`
+                path: `v1/groups/${options.groupId}/social-links`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1061,6 +1193,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/social-links`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -1072,7 +1207,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/social-links/${options.id}`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1084,6 +1222,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/social-links/${options.id}`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -1095,7 +1236,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: false,
             request: {
                 path: `v1/groups/${options.groupId}/wall/posts`,
-                qs: options
+                qs: options,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1107,6 +1251,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/wall/posts`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -1118,7 +1265,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/wall/posts/${options.id}`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1129,7 +1279,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/wall/users/${options.userId}/posts`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1140,7 +1293,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: false,
             request: {
                 path: `v1/groups/search`,
-                qs: options
+                qs: options,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1151,7 +1307,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: false,
             request: {
                 path: `v1/groups/search/lookup`,
-                qs: options
+                qs: options,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1161,7 +1320,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/groups/search/metadata`
+                path: `v1/groups/search/metadata`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1174,6 +1336,9 @@ export default class GroupsAPI extends BaseAPI {
                 path: `v1/roles`,
                 qs: {
                     ids: options.roleIds.join(",")
+                },
+                responseOptions: {
+                    allowedStatusCodes: [200]
                 }
             },
             json: true
@@ -1184,7 +1349,10 @@ export default class GroupsAPI extends BaseAPI {
         return this.request({
             requiresAuth: false,
             request: {
-                path: `v1/users/${options.userId}/groups/primary/role`
+                path: `v1/users/${options.userId}/groups/primary/role`,
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1195,7 +1363,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/user/groups/primary`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1207,6 +1378,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/user/groups/primary`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -1219,6 +1393,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/rolesets/create`,
                 method: "POST",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
@@ -1230,7 +1407,10 @@ export default class GroupsAPI extends BaseAPI {
             requiresAuth: true,
             request: {
                 path: `v1/groups/${options.groupId}/rolesets/${options.roleId}`,
-                method: "DELETE"
+                method: "DELETE",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                }
             },
             json: true
         }).then(response => response.body);
@@ -1242,6 +1422,9 @@ export default class GroupsAPI extends BaseAPI {
             request: {
                 path: `v1/groups/${options.groupId}/rolesets/${options.roleId}`,
                 method: "PATCH",
+                responseOptions: {
+                    allowedStatusCodes: [200]
+                },
                 json: options
             },
             json: true
