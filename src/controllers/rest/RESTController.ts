@@ -97,9 +97,10 @@ class RESTController {
     async getXCSRFToken (): Promise<string | undefined> {
         if (!this.options.xcsrf || (Date.now() - (this.options.xcsrfSet || 0)) >= (this.options.xcsrfRefreshInterval || DefaultRESTControllerOptions.xcsrfRefreshInterval)) {
             // Refresh token
-            await this.fetchXCSRFToken().then(token => {
-                this.setXCSRFToken(token);
-            });
+            await this.fetchXCSRFToken()
+                .then(token => {
+                    this.setXCSRFToken(token);
+                });
         }
 
         return this.options.xcsrf;
@@ -202,6 +203,24 @@ class RESTController {
     }
 
     /**
+     * Sets the amount of retries to be made to refresh XCSRF
+     * tokens on Token Validation errors
+     * @param {number} xcsrfRefreshMaxRetries Number of retries
+     */
+    setXCSRFTokenRefreshMaxRetries (xcsrfRefreshMaxRetries: number): void {
+        this.options.xcsrfRefreshMaxRetries = xcsrfRefreshMaxRetries;
+    }
+
+    /**
+     * Gets the amount of retries to be made to refresh XCSRF
+     * tokens on Token Validation errors
+     * @returns {number | undefined}
+     */
+    getXCSRFTokenRefreshMaxRetries (): number | undefined {
+        return this.options.xcsrfRefreshMaxRetries;
+    }
+
+    /**
      * Sets the options for the RESTController
      * @param {RESTControllerOptions} options The options to use
      * @returns {RESTControllerOptions}
@@ -219,5 +238,6 @@ class RESTController {
 
     }
 }
+
 
 export default RESTController;
